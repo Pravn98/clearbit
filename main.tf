@@ -29,6 +29,7 @@ resource "aws_instance" "web" {
   ami                    = "ami-0a741b782c2c8632d"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.web-sg.id]
+  subnet_id              = "subnet-f4d3a0ad"
 
   user_data = <<-EOF
               #!/bin/bash
