@@ -29,7 +29,7 @@ resource "aws_instance" "web" {
   ami                    = "ami-0a741b782c2c8632d"
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.web-sg.id]
-  subnet_id              = "subnet-015e1d31e326233dd"
+  subnet_id              = "subnet-f4d3a0ad"
 
   user_data = <<-EOF
               #!/bin/bash
@@ -40,6 +40,7 @@ resource "aws_instance" "web" {
 
 resource "aws_security_group" "web-sg" {
   name = "${random_pet.sg.id}-sg"
+  vpc_id      = "vpc-03e1a766"
   ingress {
     from_port   = 8080
     to_port     = 8080
