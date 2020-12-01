@@ -25,7 +25,7 @@ provider "random" {}
 
 resource "aws_instance" "myInstance" {
   ami           = "ami-0a741b782c2c8632d"
-  instance_type = "t2.micro"
+  instance_type = "t3.medium"
   user_data     = <<-EOF
                   #!/bin/bash
                   sudo su
