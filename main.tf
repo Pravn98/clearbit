@@ -31,10 +31,11 @@ resource "aws_instance" "myInstance" {
   user_data     = <<-EOF
                   #!/bin/bash
                   sudo su
-                  apt -y install httpd
+                  apt update
+                  apt -y install apache2
                   echo "<p> My Instance! </p>" >> /var/www/html/index.html
-                  sudo systemctl enable httpd
-                  sudo systemctl start httpd
+                  sudo systemctl enable apache2
+                  sudo systemctl start apache2
                   EOF
 }
 
