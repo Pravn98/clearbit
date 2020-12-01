@@ -25,7 +25,8 @@ provider "random" {}
 
 resource "aws_instance" "myInstance" {
   ami           = "ami-0a741b782c2c8632d"
-  instance_type = "t3.medium"
+  instance_type = "m5.large"
+  subnet_id     = "subnet-f4d3a0ad"
   user_data     = <<-EOF
                   #!/bin/bash
                   sudo su
