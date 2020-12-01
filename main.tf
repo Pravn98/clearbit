@@ -23,32 +23,19 @@ provider "aws" {
 
 provider "random" {}
 
-resource "random_pet" "sg" {}
-
-resource "aws_instance" "web" {
-  ami                    = "ami-0a741b782c2c8632d"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.web-sg.id]
-  subnet_id              = "subnet-f4d3a0ad"
-
-  user_data = <<-EOF
-              #!/bin/bash
-              echo "Hello, World" > index.html
-              nohup busybox httpd -f -p 8080 &
-              EOF
+resource "aws_instance" "myInstance" {
+  ami           = "ami-0a741b782c2c8632d"
+  instance_type = "t2.micro"
+  user_data     = <<-EOF
+                  #!/bin/bash
+                  sudo su
+                  apt -y install httpd
+                  echo "<p> My Instance! </p>" >> /var/www/html/index.html
+                  sudo systemctl enable httpd
+                  sudo systemctl start httpd
+                  EOF
 }
 
-resource "aws_security_group" "web-sg" {
-  name = "${random_pet.sg.id}-sg"
-  vpc_id = "vpc-03e1a766"
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-output "web-address" {
-  value = "${aws_instance.web.public_dns}:8080"
+output "DNS" {
+  value = aws_instance.myInstance.public_dns
 }
