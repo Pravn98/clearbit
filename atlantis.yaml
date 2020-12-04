@@ -8,7 +8,7 @@ projects:
   autoplan:
     when_modified: ["*.tf*"]
     enabled: false
-  apply_requirements: [mergeable, approved]
+  apply_requirements: [merged, mergeable, approved]
   workflow: myworkflow
 #workflows:
 #  # It's important  is "default".
