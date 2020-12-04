@@ -11,7 +11,7 @@ projects:
   apply_requirements: [mergeable, approved]
   workflow: myworkflow
 #workflows:
-#  # It's important  this is "default".
+#  # It's important  is "default".
 #  myworkflow:
 #    plan:
 #      steps:
