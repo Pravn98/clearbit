@@ -3,7 +3,7 @@ automerge: true
 projects:
 - name: my-project-name
   dir: .
-  workspace: production
+  workspace: default
   terraform_version: v0.12.0
   autoplan:
     when_modified: ["*.tf*"]
