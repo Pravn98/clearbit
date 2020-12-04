@@ -1,12 +1,5 @@
 version: 3
-parallel_plan: false
-parallel_apply: true
-repos:
-- id: /.*/
-  apply_requirements: [approved, mergeable]
-  workflow: myworkflow
-  allowed_overrides: [apply_requirements, workflow]
-  allow_custom_workflows: true
+automerge: true
 projects:
 - name: my-project-name
   dir: .
@@ -16,15 +9,3 @@ projects:
     when_modified: ["*.tf*"]
     enabled: true
   apply_requirements: [mergeable, approved]
-  workflow: myworkflow
-workflows:
-  myworkflow:
-    plan:
-      steps:
-      - run : make bootstrap
-      - init
-      - run: echo "plan"
-      - run: make plan
-    apply:
-      steps:
-      - run: make apply
