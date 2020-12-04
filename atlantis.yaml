@@ -10,7 +10,7 @@ projects:
     enabled: true
   apply_requirements: [mergeable, approved]
 workflows:
-  # It's important that this is "default".
+  # It's important  this is "default".
   default:
     plan:
       steps:
