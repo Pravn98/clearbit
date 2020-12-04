@@ -21,9 +21,9 @@ workflows:
   myworkflow:
     plan:
       steps:
+      - run : make bootstrap
       - init
       - run: echo "plan"
-      - run : make bootstrap
       - run: make plan
     apply:
       steps:
