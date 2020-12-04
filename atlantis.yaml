@@ -1,7 +1,7 @@
 version: 3
 automerge: true
 projects:
-- name: my-project-name
+- name: clearbit
   dir: .
   workspace: default
   terraform_version: v0.12.0
