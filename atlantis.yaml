@@ -1,12 +1,5 @@
 version: 3
-parallel_plan: false
-parallel_apply: true
-repos:
-- id: /.*/
-  apply_requirements: [approved, mergeable]
-  workflow: myworkflow
-  allowed_overrides: [apply_requirements, workflow]
-  allow_custom_workflows: true
+automerge: true
 projects:
 - name: my-project-name
   dir: .
@@ -21,10 +14,10 @@ workflows:
   myworkflow:
     plan:
       steps:
-      - run : make bootstrap
       - init
-      - run: echo "plan"
-      - run: make plan
+      - plan:
+          extra_args: ["-lock", "false"]
     apply:
       steps:
-      - run: make apply
+      - run: echo hi
+      - apply
