@@ -4,7 +4,7 @@ projects:
 - name: clearbit
   dir: .
   workspace: default
-  terraform_version: v0.12.0
+  terraform_version: v0.13.5
   autoplan:
     when_modified: ["*.tf*"]
     enabled: false
