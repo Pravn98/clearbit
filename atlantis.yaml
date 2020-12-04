@@ -2,7 +2,7 @@ version: 3
 parallel_plan: false
 parallel_apply: true
 projects:
-  - dir: 
+  - dir: . 
     workspace: production
     autoplan:
-      when_modified: ["**/*.tf*"]
+      when_modified: ["*.tf*"]
