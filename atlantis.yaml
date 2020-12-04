@@ -2,7 +2,23 @@ version: 3
 parallel_plan: false
 parallel_apply: true
 projects:
-  - dir: . 
-    workspace: production
-    autoplan:
-      when_modified: ["*.tf*"]
+- name: my-project-name
+  dir: .
+  workspace: production
+  terraform_version: v0.12.0
+  autoplan:
+    when_modified: ["*.tf", "../modules/**.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - run: echo "plan"
+      - run : make bootstrap
+      - plan:
+      - run: make plan
+    apply:
+      steps:
+      - run: make apply
