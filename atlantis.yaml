@@ -12,11 +12,11 @@ workflows:
       steps:
       #- run: terraform init  -input=false -no-color
       - run: terraform init
-        #- run: terraform workspace new dev
+      - run: terraform workspace new dev
         #- run: terraform workspace select -no-color dev 
         #make bootstrap
-      #- run: terraform workspace select -no-color $WORKSPACE
       - run: terraform workspace list
+      - run: terraform workspace select dev
       - run: terraform plan 
         #-lock=false
         #-no-color 
