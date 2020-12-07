@@ -1,2 +1,2 @@
-include ./buildfile
-ENVS:=  production
+include ../buildfile
+ENVS:=  dev
