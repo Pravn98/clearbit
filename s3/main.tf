@@ -18,7 +18,7 @@ terraform {
     required_version = ">= 0.13.5"
     backend "s3" {
         bucket = "clrbit-shared-tfstate"
-        #profile = "mgmt"
+        profile = "mgmt"
         key = "aws-infra/s3-test/terraform.tfstate"
         region = "us-west-2"
         encrypt = true
