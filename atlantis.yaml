@@ -2,13 +2,13 @@ version: 3
 automerge: true
 projects:
 - name: clearbit
-  dir: s3/
+  dir: s3
   workspace: dev
   terraform_version: v0.13.5
-  autoplan:
-    when_modified: ["*.tf*"]
-    enabled: false
-  apply_requirements: [ mergeable, approved]
+  #  autoplan:
+  #    when_modified: ["*.tf*"]
+  #    enabled: false
+  #  apply_requirements: [ mergeable, approved]
   workflow: myworkflow
 
 #workflows:
