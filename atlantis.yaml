@@ -1,5 +1,17 @@
-version: 3
-projects:
-- dir: .
-  workspace: staging
-  
+workflows: staging
+  myworkflow:
+    plan:
+      steps:
+      - run: terraform init -input=false -no-color
+      
+      # If you're using workspaces you need to select the workspace using the
+      # $WORKSPACE environment variable.
+      - run: terraform workspace select -no-color $WORKSPACE
+      
+      # You MUST output the plan using -out $PLANFILE because Atlantis expects
+      # plans to be in a specific location.
+      - run: terraform plan -input=false -refresh -no-color -out $PLANFILE
+    apply:
+      steps:
+      # Again, you must use the $PLANFILE environment variable.
+      - run: terraform apply -no-color $PLANFILE
