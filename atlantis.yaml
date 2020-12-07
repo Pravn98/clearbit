@@ -10,8 +10,6 @@ projects:
   #    enabled: false
   #  apply_requirements: [ mergeable, approved]
   workflow: myworkflow
-
-
 workflows:
   myworkflow:
     plan:
