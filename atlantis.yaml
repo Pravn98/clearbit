@@ -10,7 +10,7 @@ workflows:
   myworkflow:
     plan:
       steps:
-      #- run: terraform init -input=false -no-color
+      #- run: terraform init  -input=false -no-color
       - run: terraform init
         #- run: terraform workspace new dev
         #- run: terraform workspace select -no-color dev 
