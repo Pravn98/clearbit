@@ -27,6 +27,6 @@ workflows:
     apply:
       steps:
       #- run: terraform apply -no-color  $PLANFILE
-      - run: terraform apply 
+      #- run: terraform apply 
         #-no-color dev
       - run: make apply
