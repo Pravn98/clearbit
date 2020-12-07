@@ -10,6 +10,7 @@ projects:
     enabled: false
   apply_requirements: [ mergeable, approved]
   workflow: myworkflow
+
 #workflows:
 #  # It's important  is "default".
 #  myworkflow:
