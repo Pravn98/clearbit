@@ -11,13 +11,15 @@ workflows:
     plan:
       steps:
       #- run: terraform init  -input=false -no-color
-      - run: terraform init
-      - run: terraform workspace new dev
+      #- run: terraform init
+      - run: make bootstrap
+      - run: make plan
+      #- run: terraform workspace new dev
         #- run: terraform workspace select -no-color dev 
         #make bootstrap
-      - run: terraform workspace list
-      - run: terraform workspace select dev
-      - run: terraform plan 
+      #- run: terraform workspace list
+      #- run: terraform workspace select dev
+      #- run: terraform plan 
         #-lock=false
         #-no-color 
         #dev 
@@ -27,4 +29,4 @@ workflows:
       #- run: terraform apply -no-color  $PLANFILE
       - run: terraform apply 
         #-no-color dev
-        #make apply
+      - run: make apply
