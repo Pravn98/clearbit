@@ -1,4 +1,26 @@
 version: 3
+automerge: true
 projects:
-- dir: s3
+- name: clearbit
+  dir: s3
   workspace: dev
+  terraform_version: v0.13.5
+  #  autoplan:
+  #    when_modified: ["*.tf*"]
+  #    enabled: false
+  #  apply_requirements: [ mergeable, approved]
+  workflow: myworkflow
+
+
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      #- run: terraform init -input=false -no-color
+      - run: make bootstrap
+      #- run: terraform workspace select -no-color $WORKSPACE
+      - run: make plan
+    apply:
+      steps:
+      #- run: terraform apply -no-color $PLANFILE
+      - run: make apply
