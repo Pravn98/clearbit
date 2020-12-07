@@ -2,46 +2,28 @@ version: 3
 automerge: true
 projects:
 - name: clearbit
-  dir: s3/
+  dir: s3
   workspace: dev
   terraform_version: v0.13.5
-  autoplan:
-    when_modified: ["*.tf*"]
-    enabled: false
-  apply_requirements: [ mergeable, approved]
   workflow: myworkflow
-
-#workflows:
-#  # It's important  is "default".
-#  myworkflow:
-#    plan:
-#      steps:
-#      - init
-#      - run: make bootstrap
-#      - run: make plan
-#    apply:
-#      steps:
-#      - run: make apply
-
-
 workflows:
   myworkflow:
     plan:
       steps:
       #- run: terraform init -input=false -no-color
-      - run: make bootstrap
-      
-      # If you're using workspaces you need to select the workspace using the
-      # $WORKSPACE environment variable.
+      - run: terraform init
+        #- run: terraform workspace new dev
+        #- run: terraform workspace select -no-color dev 
+        #make bootstrap
       #- run: terraform workspace select -no-color $WORKSPACE
-      - run: make plan
-      
-      # You MUST output the plan using -out $PLANFILE because Atlantis expects
-      # plans to be in a specific location.
-      #- run: terraform plan -input=false -refresh -no-color -out $PLANFILE
-      
+      - run: terraform workspace list
+      - run: terraform plan -lock=false
+        #-no-color 
+        #dev 
+        #make plan
     apply:
       steps:
-      # Again, you must use the $PLANFILE environment variable.
       #- run: terraform apply -no-color $PLANFILE
-      - run: make apply
+      - run: terraform apply -lock=false
+        #-no-color dev
+        #make apply
