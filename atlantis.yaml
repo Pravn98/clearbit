@@ -28,6 +28,6 @@ workflows:
     apply:
       steps:
       #- run: terraform apply -no-color  $PLANFILE
-      - run: terraform apply -input=false -no-color
+      - run: terraform apply -input=false -no-color -auto-approve
         #-no-color dev
       #- run: make apply
