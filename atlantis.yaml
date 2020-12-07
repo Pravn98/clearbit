@@ -17,13 +17,14 @@ workflows:
         #make bootstrap
       #- run: terraform workspace select -no-color $WORKSPACE
       - run: terraform workspace list
-      - run: terraform plan -lock=false
+      - run: terraform plan 
+        #-lock=false
         #-no-color 
         #dev 
         #make plan
     apply:
       steps:
-      #- run: terraform apply -no-color $PLANFILE
-      - run: terraform apply -lock=false
+      #- run: terraform apply -no-color  $PLANFILE
+      - run: terraform apply 
         #-no-color dev
         #make apply
