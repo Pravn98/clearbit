@@ -15,7 +15,7 @@ workflows:
       #- run: make bootstrap
       #- run: make plan
       #- run: terraform workspace new dev
-      #- run: terraform workspace select dev
+      - run: terraform workspace select dev
       
         #make bootstrap
       #- run: terraform workspace list
