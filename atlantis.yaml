@@ -1,4 +1,33 @@
 version: 3
+automerge: true
 projects:
-- dir: .
-  workspace: staging
+- name: clearbit
+  dir: s3
+  workspace: dev
+  terraform_version: v0.13.5
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - run: terraform init  -input=false -no-color
+      #- run: terraform init
+      #- run: make bootstrap
+      #- run: make plan
+      #- run: terraform workspace new dev
+      - run: terraform workspace select dev
+      
+        #make bootstrap
+      #- run: terraform workspace list
+      #- run: terraform workspace select dev
+      - run: terraform plan 
+        #-lock=false
+        #-no-color 
+        #dev 
+        #make plan
+    apply:
+      steps:
+      #- run: terraform apply -no-color  $PLANFILE
+      - run: terraform apply -input=false -no-color -auto-approve
+        #-no-color dev
+      #- run: make apply
