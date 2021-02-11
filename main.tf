@@ -42,3 +42,6 @@ resource "aws_instance" "myInstance" {
 output "DNS" {
   value = aws_instance.myInstance.public_dns
 }
+output "current_workspace" {
+  value = terraform.workspace
+}
